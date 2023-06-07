@@ -1,18 +1,37 @@
 // Get the form element
-var form = document.getElementById('form');
+var form = document.getElementById("form");
+var firstNameEl = document.querySelector("#first-name");
+var lastNameEl = document.querySelector("#last-name");
+var emailEl = document.querySelector("#email");
+var passwordEl = document.querySelector("#password");
+var ulEl = document.querySelector("#names");
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
+var firstNameDisplay = document.createElement("li");
+var lastNameDisplay = document.createElement("li");
+
+function handleFormSubmit(event) {
+  event.preventDefault();
 
   // Get the input values
-  var firstName = document.querySelector('input[name="first-name"]').value;
-  var lastName = document.querySelector('input[name="last-name"]').value;
-  var email = document.querySelector('input[name="email"]').value;
-  var password = document.querySelector('input[name="password"]').value;
+  var firstName = firstNameEl.value;
+  console.log("firstName: " + firstName);
+
+  var lastName = lastNameEl.value;
+  console.log("lastName: " + lastName);
+
+  var email = emailEl.value;
+  console.log("email: " + email);
+
+  var password = passwordEl.value;
+  console.log("password: " + password);
+
+  firstNameDisplay.textContent = firstName;
+  ulEl.appendChild(firstNameDisplay);
+
+  lastNameDisplay.textContent = lastName;
+  ulEl.appendChild(lastNameDisplay);
 
   // Log the input values to the console
-  console.log('First Name:', firstName);
-  console.log('Last Name:', lastName);
-  console.log('Email:', email);
-  console.log('Password:', password);
-});
+};
+
+form.addEventListener("submit", handleFormSubmit)
